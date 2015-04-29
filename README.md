@@ -37,7 +37,12 @@ Template.layout.uihooks({
     }
   }
 });
+```
 
+This is it. With this much simpler syntax, you can now play with UI hooks as you would do traditionally.  
+Some more code for the complete example, should you need it.
+
+``` javascript
 Items = new Mongo.Collection("items");
 Items.insert({ title: "foo" });
 
