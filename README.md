@@ -20,8 +20,10 @@ Example
 -------  
 
 ``` javascript
+
 Template.layout.uihooks({
   ".item": {
+    container: ".container",
     insert: function(node, next) {
       console.log("Inserting an item.");
       $(node).insertBefore(next);
@@ -35,4 +37,24 @@ Template.layout.uihooks({
     }
   }
 });
+
+Items = new Mongo.Collection("items");
+Items.insert({ title: "foo" });
+
+Template.layout.helpers({
+  items: function() {
+    return Items.find();
+  }
+});
+
+```
+
+``` html
+<template name="layout">
+  <div class="container">
+    {{#each items}}
+      <div class="item">{{title}}</div>
+    {{/each}}
+  </div>
+</template>
 ```
