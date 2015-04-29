@@ -1,6 +1,6 @@
 Package.describe({
   name: "gwendall:ui-hooks",
-  summary: "A more simple API for Blaze _uihooks",
+  summary: "A simpler API for Blaze _uihooks",
   git: "https://github.com/gwendall/meteor-ui-hooks.git",
   version: "0.1.1"
 });

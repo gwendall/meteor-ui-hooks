@@ -1,7 +1,7 @@
 Meteor UI Hooks
 ===============
 
-A more simple API for Blaze \_uihooks
+A simpler API for Blaze \_uihooks
 
 Installation  
 ------------
@@ -14,7 +14,7 @@ Methods
 ----------
 
 **Template[tplName].uihooks(hooks)**  
-Set the insert, move, remove as you would do with vanilla \_uihooks.
+Set the insert, move, remove as you would do with vanilla \_uihooks. Optionally pass the container of the items you want to look at (recommended).
 
 Example
 -------  
