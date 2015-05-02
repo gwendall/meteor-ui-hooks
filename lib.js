@@ -10,7 +10,6 @@ Template.prototype.uihooks = function(hooksAll) {
       $(container).each(function() {
         this._uihooks = {
           insertElement: function(node, next) {
-            console.log("Inserting element.", node);
             if (!$(node).is(selector)) return;
             hooks.insert && hooks.insert.apply(this, [node, next]);
           },
