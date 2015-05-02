@@ -24,14 +24,14 @@ Example
 Template.layout.uihooks({
   ".item": {
     container: ".container",
-    insert: function(node, next) {
+    insert: function(node, next, tpl) {
       console.log("Inserting an item.");
       $(node).insertBefore(next);
     },
-    move: function(node, next) {
+    move: function(node, next, tpl) {
       console.log("Moving an item.");
     },
-    remove: function(node) {
+    remove: function(node, tpl) {
       console.log("Removing an item.");
       $(node).remove();
     }
