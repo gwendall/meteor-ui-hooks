@@ -11,15 +11,15 @@ Template.prototype.uihooks = function(hooksAll) {
         this._uihooks = {
           insertElement: function(node, next) {
             if (!$(node).is(selector)) return;
-            hooks.insert && hooks.insert.apply(this, [node, next]);
+            hooks.insert && hooks.insert.apply(this, [node, next, tpl]);
           },
           moveElement: function(node, next) {
             if (!$(node).is(selector)) return;
-            hooks.move && hooks.move.apply(this, [node, next]);
+            hooks.move && hooks.move.apply(this, [node, next, tpl]);
           },
           removeElement: function(node) {
             if (!$(node).is(selector)) return;
-            hooks.remove && hooks.remove.apply(this, [node]);
+            hooks.remove && hooks.remove.apply(this, [node, tpl]);
           }
         };
       });
