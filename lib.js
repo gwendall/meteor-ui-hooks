@@ -1,6 +1,7 @@
 Template.prototype.uihooks = function(hooksAll) {
   var tpl = this;
   tpl.onRendered(function() {
+    if (!tpl.viewName) return;
     tpl = this;
     var tplContainer = $(tpl.firstNode.parentNode);
     _.each(hooksAll, function(hooks, selector) {
