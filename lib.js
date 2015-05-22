@@ -19,7 +19,7 @@ Template.prototype.uihooks = function(hooksAll) {
             hooks.move && hooks.move.apply(this, [node, next, tpl]);
           },
           removeElement: function(node) {
-            if (!$(node).is(selector)) return $(node).remove();;
+            if (!$(node).is(selector)) return $(node).remove();
             hooks.remove && hooks.remove.apply(this, [node, tpl]);
           }
         };
