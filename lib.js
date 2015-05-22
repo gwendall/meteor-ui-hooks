@@ -11,7 +11,7 @@ Template.prototype.uihooks = function(hooksAll) {
       $(container).each(function() {
         this._uihooks = {
           insertElement: function(node, next) {
-            if (!$(node).is(selector)) return;
+            if (!$(node).is(selector)) return $(node).insertBefore(next);
             hooks.insert && hooks.insert.apply(this, [node, next, tpl]);
           },
           moveElement: function(node, next) {
@@ -19,7 +19,7 @@ Template.prototype.uihooks = function(hooksAll) {
             hooks.move && hooks.move.apply(this, [node, next, tpl]);
           },
           removeElement: function(node) {
-            if (!$(node).is(selector)) return;
+            if (!$(node).is(selector)) return $(node).remove();
             hooks.remove && hooks.remove.apply(this, [node, tpl]);
           }
         };
