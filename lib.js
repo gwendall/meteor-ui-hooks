@@ -10,7 +10,6 @@ Template.prototype.uihooks = function(hooksAll) {
       var container = declaredContainer || itemsContainer || tplContainer;
       $(container).each(function() {
         var current = this._uihooks;
-        console.log(current);
 
         this._uihooks = {
           insertElement: function(node, next) {
