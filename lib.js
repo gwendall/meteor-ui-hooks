@@ -1,8 +1,9 @@
 var allFalse = function(array) {
-  for (var elm in array) {
-    if (elm) return false
-  }
-  return true;
+  var outcome = true;
+  array.forEach(function(elm){
+    if(elm) return outcome = false;
+  });
+  return outcome;
 };
 
 var makeHook = function(hooks, defaultCallback) {
