@@ -38,6 +38,11 @@ Template.prototype.uihooks = function(hooksAll) {
             move: [],
             remove: []
           };
+          if (this._uihooks) {
+            if (this._uihooks.insertElement) this._alluihooks.insert.push(this._uihooks.insertElement);
+            if (this._uihooks.moveElement) this._alluihooks.move.push(this._uihooks.moveElement);
+            if (this._uihooks.removeElement) this._alluihooks.remove.push(this._uihooks.removeElement);
+          }
         }
         this._alluihooks.insert.push(function(node, next) {
           if (!$(node).is(selector)) return false;
