@@ -22,17 +22,17 @@ Example
 ``` javascript
 
 Template.layout.uihooks({
-  ".item": {
-    container: ".container",
+  '.item': {
+    container: '.container',
     insert: function(node, next, tpl) {
-      console.log("Inserting an item.");
+      console.log('Inserting an item.');
       $(node).insertBefore(next);
     },
     move: function(node, next, tpl) {
-      console.log("Moving an item.");
+      console.log('Moving an item.');
     },
     remove: function(node, tpl) {
-      console.log("Removing an item.");
+      console.log('Removing an item.');
       $(node).remove();
     }
   }
@@ -43,8 +43,8 @@ This is it. With this much simpler syntax, you can now play with UI hooks as you
 Some more code for the complete example, should you need it.
 
 ``` javascript
-Items = new Mongo.Collection("items");
-Items.insert({ title: "foo" });
+Items = new Mongo.Collection('items');
+Items.insert({ title: 'foo' });
 
 Template.layout.helpers({
   items: function() {
