@@ -38,7 +38,7 @@ Template.prototype.uihooks = function(hooksAll) {
             if ($(node).is(selector)) {
               hooks.remove && hooks.remove.apply(this, [node, tpl]);
             } else {
-              defaultHooks.remove(node, container);
+              defaultHooks.remove(node);
             }
           },
           moveElement: function(node, next) {
