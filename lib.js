@@ -1,9 +1,18 @@
-var insertNode = function(node, next, container) {
-  if (next) {
-    $(node).insertBefore(next);
-  } else {
-    $(container).append(node);
-  }
+var defaultHooks = {
+  insert: function(node, next, container) {
+    if (next) {
+      $(node).insertBefore(next);
+    } else {
+      $(container).append(node);
+    }
+  },
+  move: function(node, next, container) {
+    defaultHooks.remove(node);
+    defaultHooks.insert(node, next, container);
+  },
+  remove: function(node) {
+    $(node).remove();
+  },
 };
 
 Template.prototype.uihooks = function(hooksAll) {
@@ -22,22 +31,21 @@ Template.prototype.uihooks = function(hooksAll) {
             if ($(node).is(selector)) {
               hooks.insert && hooks.insert.apply(this, [node, next, tpl]);
             } else {
-              insertNode(node, next, container);
+              defaultHooks.insert(node, next, container);
             }
           },
           removeElement: function(node) {
             if ($(node).is(selector)) {
               hooks.remove && hooks.remove.apply(this, [node, tpl]);
             } else {
-              $(node).remove();
+              defaultHooks.remove(node, container);
             }
           },
           moveElement: function(node, next) {
             if ($(node).is(selector)) {
               hooks.move && hooks.move.apply(this, [node, next, tpl]);
             } else {
-              $(node).remove();
-              insertNode(node, next, container);
+              defaultHooks.move(node, container);
             }
           }
         };
