@@ -1,3 +1,11 @@
+var insertNode = function(node, next, container) {
+  if (next) {
+    $(node).insertBefore(next);
+  } else {
+    $(container).append(node);
+  }
+};
+
 Template.prototype.uihooks = function(hooksAll) {
   var tpl = this;
   tpl.onRendered(function() {
@@ -14,22 +22,22 @@ Template.prototype.uihooks = function(hooksAll) {
             if ($(node).is(selector)) {
               hooks.insert && hooks.insert.apply(this, [node, next, tpl]);
             } else {
-              if (next) {
-                $(node).insertBefore(next);
-              } else {
-                $(container).append(node);
-              }
+              insertNode(node, next, container);
             }
-          },
-          moveElement: function(node, next) {
-            if (!$(node).is(selector)) return;
-            hooks.move && hooks.move.apply(this, [node, next, tpl]);
           },
           removeElement: function(node) {
             if ($(node).is(selector)) {
               hooks.remove && hooks.remove.apply(this, [node, tpl]);
             } else {
               $(node).remove();
+            }
+          },
+          moveElement: function(node, next) {
+            if ($(node).is(selector)) {
+              hooks.move && hooks.move.apply(this, [node, next, tpl]);
+            } else {
+              $(node).remove();
+              insertNode(node, next, container);
             }
           }
         };
