@@ -11,16 +11,26 @@ Template.prototype.uihooks = function(hooksAll) {
       $(container).each(function() {
         this._uihooks = {
           insertElement: function(node, next) {
-            if (!$(node).is(selector)) return;
-            hooks.insert && hooks.insert.apply(this, [node, next, tpl]);
+            if ($(node).is(selector)) {
+              hooks.insert && hooks.insert.apply(this, [node, next, tpl]);
+            } else {
+              if (next) {
+                $(node).insertBefore(next);
+              } else {
+                $(container).append(node);
+              }
+            }
           },
           moveElement: function(node, next) {
             if (!$(node).is(selector)) return;
             hooks.move && hooks.move.apply(this, [node, next, tpl]);
           },
           removeElement: function(node) {
-            if (!$(node).is(selector)) return;
-            hooks.remove && hooks.remove.apply(this, [node, tpl]);
+            if ($(node).is(selector)) {
+              hooks.remove && hooks.remove.apply(this, [node, tpl]);
+            } else {
+              $(node).remove();
+            }
           }
         };
       });
