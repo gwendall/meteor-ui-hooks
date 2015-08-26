@@ -2,7 +2,7 @@ Package.describe({
   name: 'gwendall:ui-hooks',
   summary: 'A simpler API for Blaze _uihooks',
   git: 'https://github.com/gwendall/meteor-ui-hooks.git',
-  version: '0.1.6'
+  version: '0.1.7'
 });
 
 Package.onUse(function (api, where) {
@@ -15,5 +15,7 @@ Package.onUse(function (api, where) {
   api.addFiles([
     'lib.js',
   ], 'client');
+
+  api.export('UiHooks', 'client');
 
 });

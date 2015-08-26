@@ -1,4 +1,6 @@
-var defaultHooks = {
+UiHooks = {};
+
+UiHooks.defaults = {
   insert: function(node, next, container) {
     if (next) {
       $(node).insertBefore(next);
@@ -7,8 +9,8 @@ var defaultHooks = {
     }
   },
   move: function(node, next, container) {
-    defaultHooks.remove(node);
-    defaultHooks.insert(node, next, container);
+    UiHooks.defaults.remove(node);
+    UiHooks.defaults.insert(node, next, container);
   },
   remove: function(node) {
     $(node).remove();
@@ -85,13 +87,13 @@ Template.prototype.uihooks = function(hooksAll) {
         var self = this;
         this._uihooks = {
           insertElement: makeHook(this._alluihooks.insert, function(node, next) {
-            return defaultHooks.insert(node, next, self);
+            return UiHooks.defaults.insert(node, next, self);
           }),
           moveElement: makeHook(this._alluihooks.move, function(node, next) {
-            return defaultHooks.move(node, next, self);
+            return UiHooks.defaults.move(node, next, self);
           }),
           removeElement: makeHook(this._alluihooks.remove, function(node) {
-            return defaultHooks.remove(node);
+            return UiHooks.defaults.remove(node);
           })
         };
 
